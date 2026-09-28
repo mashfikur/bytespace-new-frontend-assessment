@@ -9,6 +9,8 @@
   --color-secondary-lime: #d4fb20;
   --color-light-gray: #4b4c53;
   --color-text-black: #242528;
+
+  --font-poppins: var(--font-poppins);
 }
 
 @theme inline {

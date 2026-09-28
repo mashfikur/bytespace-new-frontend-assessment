@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/shared/Navbar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
+  display: "swap",
+});
 
 const satoshi = localFont({
   src: [
@@ -54,6 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         satoshi.variable,
         "font-sans",
         inter.variable,
+        poppins.variable,
       )}
     >
       <body className="min-h-full flex flex-col">
