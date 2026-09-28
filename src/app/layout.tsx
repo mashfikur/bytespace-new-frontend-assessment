@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import { cn } from "@/lib/utils";
+import Navbar from "@/components/shared/Navbar";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const satoshi = localFont({
   src: [
@@ -41,8 +46,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={` ${satoshi.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html
+      lang="en"
+      className={cn(
+        "h-full",
+        "antialiased",
+        satoshi.variable,
+        "font-sans",
+        inter.variable,
+      )}
+    >
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
