@@ -29,7 +29,7 @@ export default function Categories({
       });
   }, []);
 
-  if (loading) return <p className="text-center">Loading categories...</p>;
+  if (loading) return <p className="text-center">Loading...</p>;
 
   return (
     <div className="p-11 flex items-center gap-x-4 gap-y-5 flex-wrap justify-center">

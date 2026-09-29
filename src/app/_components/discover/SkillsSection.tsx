@@ -1,6 +1,7 @@
 import { SkillCardType } from "@/lib/types";
 import React, { useEffect, useState } from "react";
 import SkillCard from "./SkillCard";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function SkillsSection({
   selectedCategory,
@@ -34,7 +35,12 @@ export default function SkillsSection({
       });
   }, [selectedCategory]);
 
-  if (loading) return <p>Loading courses...</p>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center py-20">
+        <Spinner className="text-primary-blue" />
+      </div>
+    );
 
   return (
     <div className="py-20">
