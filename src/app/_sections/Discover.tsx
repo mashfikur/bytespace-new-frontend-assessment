@@ -6,6 +6,7 @@ import HeaderTitle from "@/components/common/HeaderTitle";
 
 import Categories from "../_components/discover/Categories";
 import { useState } from "react";
+import SkillsSection from "../_components/discover/SkillsSection";
 
 export default function Discover() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Featured");
@@ -31,6 +32,8 @@ export default function Discover() {
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
+
+          <SkillsSection selectedCategory={selectedCategory} />
         </div>
       </Container>
     </div>

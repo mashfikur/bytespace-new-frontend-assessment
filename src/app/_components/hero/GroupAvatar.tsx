@@ -18,17 +18,19 @@ export default function GroupAvatar({
   count = 3,
   list = defaultList,
   maxCount,
+  size = "lg",
 }: {
   count?: number | string;
   list?: string[];
   maxCount?: number;
+  size?: "sm" | "lg" | "default" | undefined;
 }) {
   return (
     <div>
       <AvatarGroup className="">
         {list?.slice(0, maxCount).map((item, idx) => {
           return (
-            <Avatar key={idx} size="lg">
+            <Avatar key={idx} size={size} className={"border-0"}>
               <AvatarImage src={item} alt="@shadcn" />
             </Avatar>
           );

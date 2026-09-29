@@ -10,7 +10,7 @@ export default function Categories({
   setSelectedCategory: (category: string) => void;
 }) {
   const [categories, setCategories] = useState<string[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     fetch("/data/categories.json")
