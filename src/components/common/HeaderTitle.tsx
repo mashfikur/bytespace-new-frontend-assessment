@@ -13,7 +13,7 @@ export default function HeaderTitle({
   return (
     <div
       className={cn(
-        "font-poppins font-semibold text-text-black",
+        "font-poppins font-semibold text-text-black tracking-[-1px]",
         size === "lg" ? "text-[44px]" : "text-[36px]",
         classname,
       )}
