@@ -146,3 +146,13 @@ body {
 .half_circle {
   clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 }
+
+.nav_item_wrapper {
+  padding: 12px 32px;
+  border-radius: 999px;
+  backdrop-filter: blur(30px);
+  background-color: rgba(0, 0, 0, 0.2);
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}

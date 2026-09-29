@@ -6,6 +6,7 @@ import Container from "@/components/common/Container";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdOutlineShoppingBag } from "react-icons/md";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const navLinks = [
@@ -19,11 +20,37 @@ export default function Navbar() {
   ];
 
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY >= 90);
+    };
+
+    const lenis = window.__lenis;
+    if (lenis) {
+      lenis.on("scroll", handleScroll);
+    } else {
+      window.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
+    handleScroll();
+
+    return () => {
+      if (lenis) {
+        lenis.off("scroll", handleScroll);
+      } else {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
 
   return (
-    <nav className="fixed inset-0 bg-transparent w-full z-100 h-fit">
+    <nav className="fixed inset-0 bg-transparent w-full z-100 h-fit py-9">
       <Container>
-        <div className="py-9 flex items-center justify-between">
+        <div
+          className={`flex items-center justify-between duration-300 ease-in-out ${scrolled ? "nav_item_wrapper" : ""}`}
+        >
           <Link href={"/"}>
             <Image src={navLogo} alt="navbar-logo" className="w-42.5" />
           </Link>
