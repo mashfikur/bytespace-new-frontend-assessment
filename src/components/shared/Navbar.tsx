@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 import { MdOutlineShoppingBag } from "react-icons/md";
 
 export default function Navbar() {
-  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Courses", href: "/courses" },
@@ -22,7 +21,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="absolute inset-0 bg-transparent w-full z-100 h-fit">
+    <nav className="fixed inset-0 bg-transparent w-full z-100 h-fit">
       <Container>
         <div className="py-9 flex items-center justify-between">
           <Link href={"/"}>
