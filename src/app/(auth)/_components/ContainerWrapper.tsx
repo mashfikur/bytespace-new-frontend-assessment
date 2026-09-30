@@ -11,13 +11,13 @@ export default function ContainerWrapper({
   introSubtitle: string;
 }) {
   return (
-    <div className="flex justify-between gap-44">
-      <div className="flex flex-col gap-y-36">
+    <div className="flex justify-between gap-36">
+      <div className="flex flex-col gap-y-36 flex-1">
         <Intro title={introTitle} subtitle={introSubtitle} />
 
         <AuthBanner />
       </div>
-      <div>{children}</div>
+      <div className="flex-1">{children}</div>
     </div>
   );
 }
