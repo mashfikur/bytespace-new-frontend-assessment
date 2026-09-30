@@ -1,8 +1,8 @@
 import heroAvatar from "@/assets/images/hero-avatar.png";
 import Image from "next/image";
-import LearningProgress from "./LearningProgress";
-import GroupAvatar from "./GroupAvatar";
-import { IoStar } from "react-icons/io5";
+import ProgressIndicator from "./ProgressIndicator";
+
+import StudentReviewCount from "./StudentReviewCount";
 
 export default function HeroAvatarSection() {
   return (
@@ -14,7 +14,7 @@ export default function HeroAvatarSection() {
         className="w-[600px] h-[530px] object-cover drop-shadow-2xl"
       />
 
-      <LearningProgress className="absolute top-[140px] -right-20" />
+      <ProgressIndicator className="absolute top-[140px] -right-20" />
 
       {/* info */}
       <div className="p-4 bg-white rounded-2xl flex flex-col gap-1 absolute top-[120px] -left-10">
@@ -28,20 +28,7 @@ export default function HeroAvatarSection() {
         </div>
       </div>
 
-      <div className="bg-white p-4 rounded-2xl flex flex-col  gap-4 absolute -left-32 bottom-24">
-        <div className="flex flex-col gap-1">
-          <p className="text-text-black text-base font-medium">
-            Happy Students
-          </p>
-          <div className="flex items-center gap-1.5">
-            <p className="text-text-black text-sm">
-              4.5 <span className="text-[#82868E]">(240)</span>
-            </p>
-            <IoStar color="#d4fb20" size={20} />
-          </div>
-        </div>
-        <GroupAvatar count={"2K"} />
-      </div>
+      <StudentReviewCount className="absolute -left-32 bottom-24" />
     </div>
   );
 }

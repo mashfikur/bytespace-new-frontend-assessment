@@ -1,17 +1,19 @@
 import Container from "@/components/common/Container";
 import HeaderIntro from "../_components/features/HeaderIntro";
-
+import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import heroAvatar from "@/assets/images/hero-avatar.png";
+import heroAvatar2 from "@/assets/images/hero-avatar-2.png";
 import Image from "next/image";
 import Stats from "../_components/features/Stats";
 
 import limeCircleBg from "@/assets/images/lime-circle-gradient-big.svg";
 import blueCircleBg from "@/assets/images/blue-circle-gradient-big.svg";
-import LearningProgress from "../_components/hero/LearningProgress";
+import ProgressIndicator from "../_components/hero/ProgressIndicator";
 import SkillCard from "../_components/discover/SkillCard";
 import { SkillCardType } from "@/lib/types";
 
 import artWork1 from "@/assets/images/hero-artwork/art-1.svg";
+import StudentReviewCount from "../_components/hero/StudentReviewCount";
 
 const cardInfo: SkillCardType = {
   id: 1,
@@ -31,12 +33,23 @@ const cardInfo: SkillCardType = {
 };
 
 export default function PlatformFeatures() {
+  const sectionStyle = `flex items-center gap-16`;
+
+  const heroImageStyle = `min-w-[570px] max-w-[570px] h-[540px] object-contain relative z-5 drop-shadow-2xl`;
+
+  const benefits = [
+    "Share Your Expertise",
+    "Monetize Your Passion",
+    "Flexibility and Autonomy",
+    "Build a Community",
+  ];
+
   return (
     <div className="py-33 bg-[#FAFAFA] relative overflow-hidden">
       <Container className="z-10 relative">
-        <div>
+        <div className="flex flex-col gap-18">
           {/* first section */}
-          <div className="flex items-center gap-16">
+          <div className={sectionStyle}>
             <div className="space-y-10">
               <HeaderIntro
                 title="Your Path to Professional Growth Starts Here!"
@@ -49,18 +62,76 @@ export default function PlatformFeatures() {
               <div className="w-[370px] absolute -top-10 left-0 z-2">
                 <SkillCard data={cardInfo} />
               </div>
-              <Image
-                src={heroAvatar}
-                alt="hero"
-                className="min-w-[570px] max-w-[570px] h-[540px] object-contain relative z-5 drop-shadow-2xl"
-              />
+              <Image src={heroAvatar} alt="hero" className={heroImageStyle} />
 
-              <LearningProgress className="absolute top-50 -right-8 z-10" />
+              <ProgressIndicator className="absolute top-50 -right-8 z-10" />
 
               <Image
                 src={artWork1}
                 alt="art work"
                 className="absolute top-10 -right-5 size-[180px] object-contain z-15 -rotate-60 drop-shadow-2xl"
+              />
+            </div>
+          </div>
+
+          {/* second section */}
+          <div className={sectionStyle + " flex-row-reverse"}>
+            <div className="space-y-10">
+              <HeaderIntro title="Create & Manage Courses Easily.">
+                <span className="font-bold text-text-black">ByteSpace</span>{" "}
+                supports individuals or entities in the creation, publication,
+                and administration of educational courses.{" "}
+              </HeaderIntro>
+
+              <div className="flex flex-col gap-4">
+                {benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <span className="text-primary-blue text-xl">
+                      <IoCheckmarkCircleSharp />
+                    </span>
+                    <p className="text-text-black text-lg font-medium">
+                      {benefit}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <Image src={heroAvatar2} alt="hero2" className={heroImageStyle} />
+
+              <ProgressIndicator
+                className="absolute top-20 left-10 z-1"
+                bgColor="blue"
+                title="Total Revenue"
+                percentage={55}
+                heroText="$120.29"
+                heroTextVersion="sm"
+                subtitle="July 1-28"
+                hasSpace
+                width="compact"
+              />
+              <ProgressIndicator
+                className="absolute bottom-40 left-5 z-1"
+                bgColor="blue"
+                title="Year to Date"
+                showProgress={false}
+                heroText="$1,200.38"
+                heroTextVersion="sm"
+                subtitle="2023"
+                hasSpace
+                buttonText="+12$"
+                width="fit"
+              />
+
+              <Image
+                src={artWork1}
+                alt="art work"
+                className="absolute top-10 -right-5 size-[180px] object-contain z-15 drop-shadow-2xl"
+              />
+
+              <StudentReviewCount
+                className="absolute right-0 bottom-12 z-20 drop-shadow-2xl"
+                maxCount={6}
               />
             </div>
           </div>

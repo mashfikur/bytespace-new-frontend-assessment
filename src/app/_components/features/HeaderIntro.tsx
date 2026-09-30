@@ -6,15 +6,17 @@ export default function HeaderIntro({
   title,
   description,
   className,
+  children,
 }: {
   title: string;
-  description: string;
+  description?: string;
   className?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <div className={cn("flex flex-col gap-10", className)}>
       <HeaderTitle>{title}</HeaderTitle>
-      <CommonText>{description}</CommonText>
+      <CommonText>{children || description}</CommonText>
     </div>
   );
 }
