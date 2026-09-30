@@ -3,17 +3,38 @@ import Image from "next/image";
 import { IoStar } from "react-icons/io5";
 import { BsBarChartFill } from "react-icons/bs";
 import GroupAvatar from "../hero/GroupAvatar";
+import { cn } from "@/lib/utils";
 
-export default function SkillCard({ data }: { data: SkillCardType }) {
+export default function SkillCard({
+  data,
+  className,
+}: {
+  data: SkillCardType;
+  className?: string;
+}) {
+  const pillStyle = `py-1.5 px-3 bg-[#F6F6F6]/60 rounded-[24px] text-xs font-regular text-light-gray backdrop-blur-sm w-fit`;
+
   return (
-    <div className="px-4 py-5 border border-[#CED0D3] rounded-[24px] flex flex-col gap-5">
-      <Image
-        src={data.image}
-        alt={data.title}
-        className="w-full h-50 rounded-[12px] object-cover"
-        width={200}
-        height={200}
-      />
+    <div
+      className={cn(
+        "px-4 py-5 border border-[#CED0D3] rounded-[24px] flex flex-col gap-5 bg-white",
+        className,
+      )}
+    >
+      <div className="relative">
+        <Image
+          src={data.image}
+          alt={data.title}
+          className="w-full h-50 rounded-[12px] object-cover"
+          width={200}
+          height={200}
+        />
+        <div className="absolute bottom-3 left-3 w-full flex flex-wrap items-center gap-3">
+          <p className={pillStyle}> {data.lessons} lessons </p>
+          <p className={pillStyle}> {data.duration} </p>
+          <p className={pillStyle}> {data.comments} comments </p>
+        </div>
+      </div>
 
       <div className="flex flex-col gap-4">
         <div className="flex items-start justify-between gap-8">
