@@ -4,6 +4,7 @@ import PatternBg from "@/components/common/PatternBg";
 import logo from "@/assets/images/top-bar-logo.svg";
 import Link from "next/link";
 import Image from "next/image";
+import { Toaster } from "react-hot-toast";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
@@ -23,6 +24,8 @@ export default function layout({ children }: { children: React.ReactNode }) {
           {children}
         </Container>
       </div>
+
+      <Toaster position="top-center" />
     </div>
   );
 }
