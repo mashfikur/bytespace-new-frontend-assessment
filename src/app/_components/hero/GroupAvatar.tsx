@@ -4,6 +4,7 @@ import {
   AvatarGroupCount,
   AvatarImage,
 } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
 
 const defaultList = [
   "https://randomuser.me/api/portraits/men/29.jpg",
@@ -19,11 +20,13 @@ export default function GroupAvatar({
   list = defaultList,
   maxCount,
   size = "lg",
+  bgColor = "lime",
 }: {
   count?: number | string;
   list?: string[];
   maxCount?: number;
   size?: "sm" | "lg" | "default" | undefined;
+  bgColor?: "black" | "lime";
 }) {
   return (
     <div>
@@ -35,7 +38,14 @@ export default function GroupAvatar({
             </Avatar>
           );
         })}
-        <AvatarGroupCount className="bg-secondary-lime text-text-black font-semibold text-xs">
+        <AvatarGroupCount
+          className={cn(
+            " font-semibold text-xs",
+            bgColor === "black"
+              ? "bg-text-black text-white"
+              : "bg-secondary-lime text-text-black",
+          )}
+        >
           +{count}
         </AvatarGroupCount>
       </AvatarGroup>

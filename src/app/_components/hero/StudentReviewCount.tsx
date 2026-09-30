@@ -6,16 +6,21 @@ export default function StudentReviewCount({
   className,
   maxCount,
   count = "2K",
+  bgColor = "white",
+  countBgColor = "lime",
 }: {
   className?: string;
   maxCount?: number;
   count?: string;
+  bgColor?: "white" | "lime";
+  countBgColor?: "lime" | "black";
 }) {
   return (
     <div
       className={cn(
-        "bg-white p-4 rounded-2xl flex flex-col  gap-4 ",
+        " p-4 rounded-2xl flex flex-col  gap-4 ",
         className,
+        bgColor === "white" ? "bg-white" : "bg-secondary-lime",
       )}
     >
       <div className="flex flex-col gap-1">
@@ -24,10 +29,13 @@ export default function StudentReviewCount({
           <p className="text-text-black text-sm">
             4.5 <span className="text-[#82868E]">(240)</span>
           </p>
-          <IoStar color="#d4fb20" size={20} />
+          <IoStar
+            color={bgColor === "white" ? "#d4fb20" : "#003be2"}
+            size={20}
+          />
         </div>
       </div>
-      <GroupAvatar count={count} maxCount={maxCount} />
+      <GroupAvatar count={count} maxCount={maxCount} bgColor={countBgColor} />
     </div>
   );
 }
