@@ -3,9 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/shared/Navbar";
 import ScrollSmoother from "@/components/common/ScrollSmoother";
-import Footer from "@/components/shared/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -68,9 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       )}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
         <ScrollSmoother>{children} </ScrollSmoother>
-        <Footer />
       </body>
     </html>
   );

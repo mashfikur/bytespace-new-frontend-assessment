@@ -1,5 +1,4 @@
 import PatternBg from "@/components/common/PatternBg";
-import React from "react";
 
 export default function NotFound() {
   return (
