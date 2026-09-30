@@ -13,7 +13,7 @@ export default function CommonText({
   return (
     <p
       className={cn(
-        "text-lg font-satoshi ",
+        "text-lg font-satoshi",
         version === "light" ? "text-[#82868E]" : "text-light-gray",
         className,
       )}
