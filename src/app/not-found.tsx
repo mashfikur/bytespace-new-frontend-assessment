@@ -1,8 +1,10 @@
 import PatternBg from "@/components/common/PatternBg";
+import Navbar from "@/components/shared/Navbar";
 
 export default function NotFound() {
   return (
     <div className="relative min-h-screen flex flex-col">
+      <Navbar />
       <PatternBg />
 
       <div className="w-full h-full grow items-center justify-center flex flex-col gap-8">
