@@ -14,6 +14,7 @@ import { SkillCardType } from "@/lib/types";
 
 import artWork1 from "@/assets/images/hero-artwork/art-1.svg";
 import StudentReviewCount from "../_components/hero/StudentReviewCount";
+import { cn } from "@/lib/utils";
 
 const cardInfo: SkillCardType = {
   id: 1,
@@ -36,6 +37,8 @@ export default function PlatformFeatures() {
   const sectionStyle = `flex items-center gap-16`;
 
   const heroImageStyle = `min-w-[570px] max-w-[570px] h-[540px] object-contain relative z-5 drop-shadow-2xl`;
+
+  const gradientStyle = `absolute rounded-full z-0 pointer-none`;
 
   const benefits = [
     "Share Your Expertise",
@@ -126,7 +129,7 @@ export default function PlatformFeatures() {
               <Image
                 src={artWork1}
                 alt="art work"
-                className="absolute top-10 -right-5 size-[180px] object-contain z-15 drop-shadow-2xl"
+                className="absolute top-30 right-5 size-[180px] object-contain z-15 drop-shadow-2xl"
               />
 
               <StudentReviewCount
@@ -138,15 +141,26 @@ export default function PlatformFeatures() {
         </div>
       </Container>
 
+      {/* gradient bg */}
       <Image
         src={limeCircleBg}
         alt="lime circle bg"
-        className="absolute -top-90 left-40 size-[1140px] rounded-full z-0"
+        className={cn(gradientStyle, "-top-90 left-30 size-[1140px]")}
       />
       <Image
         src={blueCircleBg}
         alt="blue circle bg"
-        className="absolute -top-90 right-[-20%] size-[1140px] rounded-full z-0"
+        className={cn(gradientStyle, "-top-90 -right-90 size-[1140px]")}
+      />
+      <Image
+        src={limeCircleBg}
+        alt="lime circle bg"
+        className={cn(gradientStyle, "bottom-0 -left-50 size-[670px]")}
+      />
+      <Image
+        src={blueCircleBg}
+        alt="blue circle bg"
+        className={cn(gradientStyle, "-bottom-60 -right-100 size-[1140px]")}
       />
     </div>
   );
