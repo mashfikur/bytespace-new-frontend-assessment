@@ -30,7 +30,7 @@ export default function Hero() {
                 business with our wide range of courses.
               </p>
 
-              <SearchBar />
+              <SearchBar containerClassName="pt-8" />
             </div>
 
             {/* hero avatar and banner */}
