@@ -13,7 +13,7 @@ export default function Footer() {
   const bottomLinks = ["Privacy Policy", "Terms of Service", "Contact Us"];
 
   return (
-    <footer className="py-20 border-t-2">
+    <footer className="py-20 border-t-2 bg-white">
       <Container>
         <div className="flex  ustify-between gap-x-28 pb-30">
           <div className="min-w-[40%] max-w-[40%] flex flex-col gap-4">
