@@ -9,22 +9,13 @@ import art3 from "@/assets/images/hero-artwork/art-3.svg";
 import art4 from "@/assets/images/hero-artwork/art-4.svg";
 import art5 from "@/assets/images/hero-artwork/art-5.svg";
 import Image from "next/image";
+import PatternBg from "@/components/common/PatternBg";
 
 export default function Hero() {
   return (
     <div className=" z-10 text-white relative overflow-hidden">
       {/* background */}
-      <div
-        className="absolute inset-0 -z-10 w-full h-full"
-        style={{
-          background: "#003be2",
-          backgroundImage: `
-      linear-gradient(to right, rgba(245, 245, 246, 0.15) 2.5px, transparent 2.5px),
-      linear-gradient(to bottom, rgba(245, 245, 246, 0.15) 2.5px, transparent 2.5px)
-    `,
-          backgroundSize: "120px 120px",
-        }}
-      ></div>
+      <PatternBg />
 
       <div className="relative z-30">
         <Container>
