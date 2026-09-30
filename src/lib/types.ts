@@ -13,3 +13,11 @@ export type SkillCardType = {
   students: number;
   categories: string[];
 };
+
+export type Review = {
+  id: string;
+  name: string;
+  role: string;
+  avatarUrl: string;
+  quote: string;
+};

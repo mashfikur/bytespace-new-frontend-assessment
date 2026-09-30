@@ -40,7 +40,7 @@ export default function Creator() {
       <Image
         src={art1}
         alt="artwork-1"
-        className="absolute bottom-[35%] -translate-y-[35%] left-0 -z-1"
+        className="absolute bottom-[35%] translate-y-[-35%] left-0 -z-1"
       />
       <Image
         src={art4}
