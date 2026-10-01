@@ -8,7 +8,7 @@ import { Toaster } from "react-hot-toast";
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative auth_layout pb-10">
       <PatternBg />
 
       {/* content */}

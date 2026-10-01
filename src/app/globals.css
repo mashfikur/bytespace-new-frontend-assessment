@@ -147,6 +147,14 @@ body {
   clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
 }
 
+html:has(.auth_layout) {
+  scrollbar-width: none;
+}
+
+html:has(.auth_layout)::-webkit-scrollbar {
+  display: none;
+}
+
 .nav_item_wrapper {
   padding: 12px 32px;
   border-radius: 999px;

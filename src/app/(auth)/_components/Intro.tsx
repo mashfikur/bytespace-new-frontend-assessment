@@ -1,4 +1,5 @@
 import React from "react";
+import { RevealGroup, RevealItem } from "@/components/animations/Reveal";
 
 export default function Intro({
   title,
@@ -8,10 +9,14 @@ export default function Intro({
   subtitle: string;
 }) {
   return (
-    <div className="space-y-4 text-white max-w-118">
-      <h1 className="text-xl font-poppins font-medium ">{title}</h1>
+    <RevealGroup className="space-y-4 text-white max-w-118">
+      <RevealItem blur={false}>
+        <h1 className="text-xl font-poppins font-medium ">{title}</h1>
+      </RevealItem>
 
-      <p className="text-lg text-white ">{subtitle}</p>
-    </div>
+      <RevealItem blur={false}>
+        <p className="text-lg text-white ">{subtitle}</p>
+      </RevealItem>
+    </RevealGroup>
   );
 }
