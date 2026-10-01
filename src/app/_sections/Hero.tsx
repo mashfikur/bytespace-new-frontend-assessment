@@ -10,6 +10,11 @@ import art4 from "@/assets/images/hero-artwork/art-4.svg";
 import art5 from "@/assets/images/hero-artwork/art-5.svg";
 import Image from "next/image";
 import PatternBg from "@/components/common/PatternBg";
+import {
+  Reveal,
+  RevealGroup,
+  RevealItem,
+} from "@/components/animations/Reveal";
 
 export default function Hero() {
   return (
@@ -20,62 +25,67 @@ export default function Hero() {
       <div className="relative z-30">
         <Container>
           <div className="relative">
-            <div className="mt-30 z-10 relative pb-10 pt-12 space-y-8">
-              <h1 className="text-[72px] font-semibold font-poppins text-center leading-24">
-                Get Access to Hundreds <br /> Courses Available
-              </h1>
+            <RevealGroup
+              className="mt-30 z-10 relative pb-10 pt-12 space-y-8"
+              delay={0.3}
+            >
+              <RevealItem>
+                <h1 className="text-[72px] font-semibold font-poppins text-center leading-24">
+                  Get Access to Hundreds <br /> Courses Available
+                </h1>
+              </RevealItem>
 
-              <p className="text-lg text-center">
-                Unlock your creativity, gain valuable knowledge, and grow your
-                business with our wide range of courses.
-              </p>
+              <RevealItem>
+                <p className="text-lg text-center">
+                  Unlock your creativity, gain valuable knowledge, and grow your
+                  business with our wide range of courses.
+                </p>
+              </RevealItem>
 
-              <SearchBar containerClassName="pt-8" />
-            </div>
+              <RevealItem>
+                <SearchBar containerClassName="pt-8" />
+              </RevealItem>
+            </RevealGroup>
 
             {/* hero avatar and banner */}
             <HeroAvatarSection />
 
             {/* circle */}
-            <div className="absolute bottom-[-70%] left-0 -z-10  bg-[#CBFC01] rounded-full w-full aspect-square half_circle"></div>
+            <Reveal
+              className="absolute bottom-[-70%] left-0 -z-10  bg-[#CBFC01] rounded-full w-full aspect-square half_circle"
+              delay={0.9}
+            />
 
             {/* art illustrations */}
-            <Image
-              src={art4}
-              alt="artwork-3"
-              className="absolute top-1/2 -translate-y-1/2 left-0 w-[175px]"
-            />
-            <Image
-              src={art5}
-              alt="artwork-3"
+            <Reveal
+              className="absolute top-1/2 -translate-y-1/2 left-0"
+              delay={0.9}
+            >
+              <Image src={art4} alt="artwork-3" className="w-[175px]" />
+            </Reveal>
+            <Reveal
               className="absolute top-1/2 -translate-y-1/2 right-0"
-            />
-            <Image
-              src={art3}
-              alt="artwork-3"
-              className="absolute bottom-[4%] -left-32"
-            />
-            <Image
-              src={art4}
-              alt="artwork-4"
-              className="absolute bottom-[4%] -right-40"
-            />
+              delay={0.9}
+            >
+              <Image src={art5} alt="artwork-3" />
+            </Reveal>
+            <Reveal className="absolute bottom-[4%] -left-32" delay={0.9}>
+              <Image src={art3} alt="artwork-3" />
+            </Reveal>
+            <Reveal className="absolute bottom-[4%] -right-40" delay={0.9}>
+              <Image src={art4} alt="artwork-4" />
+            </Reveal>
           </div>
         </Container>
       </div>
 
       {/* art illustrations */}
-      <Image
-        src={art1}
-        alt="artwork-1"
-        className="absolute top-[25%] -left-20 -z-1"
-        quality={100}
-      />
-      <Image
-        src={art2}
-        alt="artwork-2"
-        className="absolute top-[25%] -right-32"
-      />
+      <Reveal className="absolute top-[25%] -left-20 -z-1" delay={0.9}>
+        <Image src={art1} alt="artwork-1" quality={100} />
+      </Reveal>
+      <Reveal className="absolute top-[25%] -right-32" delay={0.9}>
+        <Image src={art2} alt="artwork-2" />
+      </Reveal>
     </div>
   );
 }

@@ -15,6 +15,11 @@ import { SkillCardType } from "@/lib/types";
 import artWork1 from "@/assets/images/hero-artwork/art-1.svg";
 import StudentReviewCount from "../_components/hero/StudentReviewCount";
 import { cn } from "@/lib/utils";
+import {
+  Reveal,
+  RevealGroup,
+  RevealItem,
+} from "@/components/animations/Reveal";
 
 const cardInfo: SkillCardType = {
   id: 1,
@@ -53,15 +58,17 @@ export default function PlatformFeatures() {
         <div className="flex flex-col gap-18">
           {/* first section */}
           <div className={sectionStyle}>
-            <div className="space-y-10">
+            <RevealGroup className="space-y-10" inView>
               <HeaderIntro
                 title="Your Path to Professional Growth Starts Here!"
                 description="Explore our curated selection of courses tailored to enhance your capabilities and accelerate your career journey. Whether you are looking to sharpen specific skills, gain industry expertise, or embark on a new career path entirely, we have the resources you need."
               />
 
-              <Stats />
-            </div>
-            <div className="relative">
+              <RevealItem blur={false}>
+                <Stats />
+              </RevealItem>
+            </RevealGroup>
+            <Reveal className="relative" inView>
               <div className="w-[370px] absolute -top-10 left-0 z-2">
                 <SkillCard data={cardInfo} />
               </div>
@@ -74,12 +81,12 @@ export default function PlatformFeatures() {
                 alt="art work"
                 className="absolute top-10 -right-5 size-[180px] object-contain z-15 -rotate-60 drop-shadow-2xl"
               />
-            </div>
+            </Reveal>
           </div>
 
           {/* second section */}
           <div className={sectionStyle + " flex-row-reverse"}>
-            <div className="space-y-10">
+            <RevealGroup className="space-y-10" inView>
               <HeaderIntro title="Create & Manage Courses Easily.">
                 <span className="font-bold text-text-black">ByteSpace</span>{" "}
                 supports individuals or entities in the creation, publication,
@@ -88,18 +95,22 @@ export default function PlatformFeatures() {
 
               <div className="flex flex-col gap-4">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-2">
+                  <RevealItem
+                    key={index}
+                    className="flex items-center gap-2"
+                    blur={false}
+                  >
                     <span className="text-primary-blue text-xl">
                       <IoCheckmarkCircleSharp />
                     </span>
                     <p className="text-text-black text-lg font-medium">
                       {benefit}
                     </p>
-                  </div>
+                  </RevealItem>
                 ))}
               </div>
-            </div>
-            <div className="relative">
+            </RevealGroup>
+            <Reveal className="relative" inView>
               <Image src={heroAvatar2} alt="hero2" className={heroImageStyle} />
 
               <ProgressIndicator
@@ -136,7 +147,7 @@ export default function PlatformFeatures() {
                 className="absolute right-0 bottom-12 z-20 drop-shadow-2xl"
                 maxCount={6}
               />
-            </div>
+            </Reveal>
           </div>
         </div>
       </Container>
