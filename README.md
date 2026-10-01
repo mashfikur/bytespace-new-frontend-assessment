@@ -2,7 +2,7 @@
 
 This repo is the frontend of ByteSpace New website. It is built as part of a frontend assessment. The codebase is entirely created and optimized by human knowledge, avoided AI usage.
 
-Live link - [https://bytespace-new-assessment.vercel.app](https://bytespace-new-assessment.vercel.app)
+Live link - <a href="https://bytespace-new-assessment.vercel.app" target="_blank">https://bytespace-new-assessment.vercel.app</a>
 
 ## What's inside
 
