@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { useState, useEffect } from "react";
+import { Reveal } from "@/components/animations/Reveal";
 
 export default function Navbar() {
   const navLinks = [
@@ -48,49 +49,51 @@ export default function Navbar() {
   return (
     <nav className="fixed inset-0 bg-transparent w-full z-100 h-fit py-9">
       <Container>
-        <div
-          className={`flex items-center justify-between duration-300 ease-in-out ${scrolled ? "nav_item_wrapper" : ""}`}
-        >
-          <Link href={"/"}>
-            <Image src={navLogo} alt="navbar-logo" className="w-42.5" />
-          </Link>
-
-          <div className="flex gap-x-6">
-            {navLinks.map((link) => {
-              const isActive = pathname === link.href;
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-white duration-300 ease-in-out ${isActive ? "font-medium" : "font-light"}`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-          </div>
-
-          <div className="flex gap-x-6 items-center">
-            {navLinks2.map((link) => {
-              const isActive = pathname === link.href;
-
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`text-white duration-300 ease-in-out ${isActive ? "font-medium" : "font-light"}`}
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
-
-            <Link href={"/"} className="w-fit h-fit">
-              <MdOutlineShoppingBag size={24} color="#fff" />
+        <Reveal>
+          <div
+            className={`flex items-center justify-between duration-300 ease-in-out ${scrolled ? "nav_item_wrapper" : ""}`}
+          >
+            <Link href={"/"}>
+              <Image src={navLogo} alt="navbar-logo" className="w-42.5" />
             </Link>
+
+            <div className="flex gap-x-6">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-white duration-300 ease-in-out ${isActive ? "font-medium" : "font-light"}`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="flex gap-x-6 items-center">
+              {navLinks2.map((link) => {
+                const isActive = pathname === link.href;
+
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`text-white duration-300 ease-in-out ${isActive ? "font-medium" : "font-light"}`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+
+              <Link href={"/"} className="w-fit h-fit">
+                <MdOutlineShoppingBag size={24} color="#fff" />
+              </Link>
+            </div>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </nav>
   );
