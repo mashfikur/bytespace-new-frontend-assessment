@@ -3,36 +3,51 @@
 import { motion, type Variants } from "motion/react";
 import React from "react";
 
-const fadeBlurUp = (delay?: number): Variants => ({
-  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+const fadeUp = ({
+  delay,
+  blur = true,
+}: {
+  delay?: number;
+  blur?: boolean;
+}): Variants => ({
+  hidden: { opacity: 0, y: 40, ...(blur && { filter: "blur(10px)" }) },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
+    ...(blur && { filter: "blur(0px)" }),
     transition: {
       duration: 0.8,
       ease: [0.22, 1, 0.36, 1],
       ...(delay !== undefined && { delay }),
     },
-    transitionEnd: { filter: "none" },
+    ...(blur && { transitionEnd: { filter: "none" } }),
   },
 });
+
+const trigger = (inView: boolean) =>
+  inView
+    ? { whileInView: "show", viewport: { once: true, amount: 0.3 } }
+    : { animate: "show" };
 
 export function Reveal({
   children,
   className,
   delay = 0,
+  blur = true,
+  inView = false,
 }: {
   children?: React.ReactNode;
   className?: string;
   delay?: number;
+  blur?: boolean;
+  inView?: boolean;
 }) {
   return (
     <motion.div
       className={className}
       initial="hidden"
-      animate="show"
-      variants={fadeBlurUp(delay)}
+      {...trigger(inView)}
+      variants={fadeUp({ delay, blur })}
     >
       {children}
     </motion.div>
@@ -44,17 +59,19 @@ export function RevealGroup({
   className,
   delay = 0,
   stagger = 0.15,
+  inView = false,
 }: {
   children: React.ReactNode;
   className?: string;
   delay?: number;
   stagger?: number;
+  inView?: boolean;
 }) {
   return (
     <motion.div
       className={className}
       initial="hidden"
-      animate="show"
+      {...trigger(inView)}
       variants={{
         hidden: {},
         show: {
@@ -70,12 +87,14 @@ export function RevealGroup({
 export function RevealItem({
   children,
   className,
+  blur = true,
 }: {
   children: React.ReactNode;
   className?: string;
+  blur?: boolean;
 }) {
   return (
-    <motion.div className={className} variants={fadeBlurUp()}>
+    <motion.div className={className} variants={fadeUp({ blur })}>
       {children}
     </motion.div>
   );

@@ -8,6 +8,7 @@ import Categories from "../_components/discover/Categories";
 import { useState } from "react";
 import SkillsSection from "../_components/discover/SkillsSection";
 import Features from "../_components/discover/Features";
+import { RevealGroup, RevealItem } from "@/components/animations/Reveal";
 
 export default function Discover() {
   const [selectedCategory, setSelectedCategory] = useState<string>("Featured");
@@ -16,17 +17,24 @@ export default function Discover() {
     <div className="py-20">
       <Container>
         <div className="">
-          <div className="flex flex-col gap-4  w-full max-w-4/5 mx-auto">
-            <HeaderTitle size="lg" classname="text-center">
-              Discover Your Passion, <br /> Build Your Skills
-            </HeaderTitle>
-            <CommonText className="text-center" version="light">
-              At Bytespace Courses, we bring you closer to life-changing
-              knowledge. Explore a variety of courses across different fields,
-              from technology to the arts, and make a difference in your career
-              and life.
-            </CommonText>
-          </div>
+          <RevealGroup
+            className="flex flex-col gap-4  w-full max-w-4/5 mx-auto"
+            inView
+          >
+            <RevealItem blur={false}>
+              <HeaderTitle size="lg" classname="text-center">
+                Discover Your Passion, <br /> Build Your Skills
+              </HeaderTitle>
+            </RevealItem>
+            <RevealItem blur={false}>
+              <CommonText className="text-center" version="light">
+                At Bytespace Courses, we bring you closer to life-changing
+                knowledge. Explore a variety of courses across different fields,
+                from technology to the arts, and make a difference in your
+                career and life.
+              </CommonText>
+            </RevealItem>
+          </RevealGroup>
 
           {/* category tabs */}
           <Categories

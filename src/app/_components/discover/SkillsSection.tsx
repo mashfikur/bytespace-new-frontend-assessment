@@ -2,6 +2,7 @@ import { SkillCardType } from "@/lib/types";
 import React, { useEffect, useState } from "react";
 import SkillCard from "./SkillCard";
 import { Spinner } from "@/components/ui/spinner";
+import { Reveal } from "@/components/animations/Reveal";
 
 export default function SkillsSection({
   selectedCategory,
@@ -46,8 +47,15 @@ export default function SkillsSection({
     <div className="py-20">
       {filteredSkills?.length > 0 ? (
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {filteredSkills.map((course: SkillCardType) => (
-            <SkillCard key={course.id} data={course} />
+          {filteredSkills.map((course: SkillCardType, index: number) => (
+            <Reveal
+              key={course.id}
+              delay={(index % 3) * 0.15}
+              blur={false}
+              inView
+            >
+              <SkillCard data={course} className="h-full" />
+            </Reveal>
           ))}
         </div>
       ) : (

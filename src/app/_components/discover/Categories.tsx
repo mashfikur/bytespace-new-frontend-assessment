@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { RevealGroup, RevealItem } from "@/components/animations/Reveal";
 
 export default function Categories({
   selectedCategory,
@@ -32,18 +33,25 @@ export default function Categories({
   if (loading) return <p className="text-center">Loading...</p>;
 
   return (
-    <div className="p-11 flex items-center gap-x-4 gap-y-5 flex-wrap justify-center">
+    <RevealGroup
+      className="p-11 flex items-center gap-x-4 gap-y-5 flex-wrap justify-center"
+      stagger={0.04}
+      inView
+    >
       {categories.map((category: string, index: number) => (
-        <button
-          onClick={() => setSelectedCategory(category)}
-          key={index}
-          className={`py-3 px-4 text-base font-medium duration-300 ease-in-out rounded-[24px] cursor-pointer ${selectedCategory === category ? "bg-secondary-lime text-text-black" : "bg-[#F5F5F6] text-light-gray"}`}
-        >
-          {category}
-        </button>
+        <RevealItem key={index} blur={false}>
+          <button
+            onClick={() => setSelectedCategory(category)}
+            className={`py-3 px-4 text-base font-medium duration-300 ease-in-out rounded-[24px] cursor-pointer ${selectedCategory === category ? "bg-secondary-lime text-text-black" : "bg-[#F5F5F6] text-light-gray"}`}
+          >
+            {category}
+          </button>
+        </RevealItem>
       ))}
 
-      <p className="text-primary-blue text-base font-medium"> + More </p>
-    </div>
+      <RevealItem blur={false}>
+        <p className="text-primary-blue text-base font-medium"> + More </p>
+      </RevealItem>
+    </RevealGroup>
   );
 }
