@@ -11,6 +11,7 @@ import art4 from "@/assets/images/hero-artwork/art-4.svg";
 import art7 from "@/assets/images/hero-artwork/art-7.svg";
 import art6 from "@/assets/images/hero-artwork/art-6.svg";
 import Image from "next/image";
+import { RevealGroup, RevealItem } from "@/components/animations/Reveal";
 
 export default function Creator() {
   return (
@@ -19,21 +20,27 @@ export default function Creator() {
       <PatternBg />
 
       <Container>
-        <div className="flex flex-col items-center gap-10">
-          <HeaderTitle classname="text-white text-center">
-            Unlock Your Potential as a <br /> Creator with ByteSpace
-          </HeaderTitle>
+        <RevealGroup className="flex flex-col items-center gap-10" inView>
+          <RevealItem blur={false}>
+            <HeaderTitle classname="text-white text-center">
+              Unlock Your Potential as a <br /> Creator with ByteSpace
+            </HeaderTitle>
+          </RevealItem>
 
-          <CommonText className="text-white text-center max-w-4/5 font-light">
-            Experience the collaboration of numerous creators and an expanding
-            selection of courses. Register now and become a part of a community
-            comprising over 10,000 local and international creators. Utilize our
-            Course Editor, and showcase your expertise by publishing your finest
-            course on the ByteSpace Course Library.
-          </CommonText>
+          <RevealItem className="max-w-4/5" blur={false}>
+            <CommonText className="text-white text-center font-light">
+              Experience the collaboration of numerous creators and an expanding
+              selection of courses. Register now and become a part of a
+              community comprising over 10,000 local and international creators.
+              Utilize our Course Editor, and showcase your expertise by
+              publishing your finest course on the ByteSpace Course Library.
+            </CommonText>
+          </RevealItem>
 
-          <CommonButton label="Join as a creator" />
-        </div>
+          <RevealItem blur={false}>
+            <CommonButton label="Join as a creator" />
+          </RevealItem>
+        </RevealGroup>
       </Container>
 
       {/* illustrations */}

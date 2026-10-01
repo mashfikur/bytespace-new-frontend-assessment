@@ -1,3 +1,5 @@
+"use client";
+
 const ReviewData = [
   {
     id: "testimonial-1",
@@ -39,6 +41,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import ReviewCard from "./ReviewCard";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function ReviewCarousel() {
   return (
@@ -47,11 +50,15 @@ export default function ReviewCarousel() {
         opts={{
           loop: true,
         }}
+        plugins={[Autoplay({ delay: 2000, stopOnInteraction: false })]}
       >
         <CarouselContent className="pb-5 -ml-10">
-          {ReviewData.map((data) => {
+          {[...ReviewData, ...ReviewData].map((data, index) => {
             return (
-              <CarouselItem key={data.id} className="basis-[33%] flex pl-10">
+              <CarouselItem
+                key={`${data.id}-${index}`}
+                className="basis-[33%] flex pl-10"
+              >
                 <ReviewCard data={data} />
               </CarouselItem>
             );
